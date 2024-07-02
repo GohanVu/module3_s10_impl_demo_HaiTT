@@ -14,4 +14,6 @@ public interface IStudentRepository {
     Student findById(Long id);
 
     void editById(Long id, Student student);
+
+    List<Student> searchByName(String search);
 }

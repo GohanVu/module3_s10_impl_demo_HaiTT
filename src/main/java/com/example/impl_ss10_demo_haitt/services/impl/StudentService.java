@@ -34,14 +34,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public List<Student> searchByName(String search) {
-        List<Student> students = this.findAll();
-        List<Student> result  = new ArrayList<>();
-        for (Student student : students){
-            if(student.getName().toLowerCase().contains(search.toLowerCase())){
-                result.add(student);
-            }
-        }
-        return result;
+        return  studentRepository.searchByName(search);
     }
 
     @Override

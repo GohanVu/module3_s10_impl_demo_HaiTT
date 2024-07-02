@@ -28,8 +28,6 @@ public class StudentControllers  extends HttpServlet {
             case "edit":
                 editShowForm(req,resp);
                 break;
-            case "search":
-                searchByName(req,resp);
             default:
                 List<Student> students = studentService.findAll();
                 req.setAttribute("students",students);
@@ -72,6 +70,7 @@ public class StudentControllers  extends HttpServlet {
                 Student student = new Student(name,address,points);
                 studentService.save(student);
                 resp.sendRedirect("/student");
+                break;
             case "delete":
                 Long id = Long.parseLong(req.getParameter("id"));
                 boolean isDelete = studentService.deleteById(id);
@@ -83,6 +82,7 @@ public class StudentControllers  extends HttpServlet {
                     req.setAttribute("students",students);
                     req.getRequestDispatcher("/student/list.jsp").forward(req,resp);
                 }
+                break;
             case "edit":
                 updateStudent(req,resp);
                 break;
